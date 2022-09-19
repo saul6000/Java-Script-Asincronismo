@@ -8,17 +8,17 @@ const fetchData = (urlApi)=>{
 fetchData(`${API}/products`)
 .then(response => response.json())
 .then(products =>{
-    console.log(products[0])
+  //  console.log(products[0])
     return fetchData(`${API}/products/${products[0].id}`)
 })
 .then(response => response.json())
 .then(products =>{
-    console.log(products.title);
+ //   console.log(products.title);
   return fetchData(`${API}/categories/${products.category.id}?`)
 })
 .then(response => response.json())
 .then(category => {
-    console.log(category.name)
+//    console.log(category.name)
 })
 .catch(error => console.error(error))
 .finally(()=> console.log('Finally'));

@@ -3,7 +3,7 @@
     resolve('hey');
     });
 -*/
-    const cows =10;
+    const cows =11;
 
     const countcows = new Promise(
         (resolve,reject)=>{
@@ -11,18 +11,18 @@
             reject(`Las vacas no cumple con la cantidad de ser mayores a 10 el numero total de vacas que tiene es ${cows}`);
         });
         
-        countcows.then(resolve =>{
-          console.log(resolve)  
-        }).catch(reject =>{
+        countcows.then(resolve => resolve + "ya no te quiero")
+        .then(resolve => console.log(resolve))
+        .catch(reject =>{
             console.log(reject)
         }).finally(()=>{
             console.log('termine')
         })
 
 
-        const delay = new Promise(
+   /*    const delay = new Promise(
             setImmediate(()=>{
 
             },2000),(resolve,reject)=>{
                 resolve('hello after 2 s')
-            })
+            })*/

@@ -1,20 +1,42 @@
 //npm install XMLHTTPresquest
-const XMLHttpRequest = require('xmlhttprequest');
-const API = 'https://api.escuelajs.co/api/v1';
+const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+const API = "https://api.escuelajs.co/api/v1";
  
-let datos = (urlApi,callback)=>{
- let http = new XMLHttpRequest();
- http.open('GET',urlApi,true);
- http.onreadystatechange = (event)=>{
-    if(http.readyState ==4){
-        if(xhtpp.status===200){
-            callback(null,JSON.parse(http.responseText));
+let fetchdatos = (urlApi,callback)=>{
+ let xhttp = new XMLHttpRequest();
+ xhttp.open('GET',urlApi,true);
+ xhttp.onreadystatechange = (event)=>{
+    if(xhttp.readyState === 4){
+        if(xhttp.status === 200){
+             callback(null,JSON.parse(xhttp.responseText));
         }
-    }
+    
     else{
+        console.log("muy mal")
         const error=new Error(`Error en el ${urlApi}`);
         return callback(error,null);
     }
- }
- http.send();
 }
+ }
+ xhttp.send();
+}
+
+fetchdatos(`${API}/products`,(error1,data1)=>{
+  if(error1){
+  return console.error(error1); 
+  }
+  fetchdatos(`${API}/products/${data1[0].id}`,(error2,data2)=>{
+     if(error2){
+        return console.error(error2)
+     }
+     console.log(data1[0].id);
+     fetchdatos(`${API}/categories/${data2?.category?.id}`,(error3,data3)=>{
+        if(error3){
+           return console.error(error3)
+        }    
+    console.log(data1[0]);
+    console.log(data2.title);
+    console.log(data3.name);
+     });
+  });
+});

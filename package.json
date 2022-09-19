@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "callback": "node src/callback/XMLHTTPRequest.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/saul6000/Java-Script-Asincronismo#readme",
   "dependencies": {
+    "node-fetch": "^3.2.10",
+    "run-code": "^0.0.0",
     "xmlhttprequest": "^1.8.0"
-  }
+  },
+  "type":"module"
 }
